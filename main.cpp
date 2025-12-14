@@ -23,7 +23,10 @@ vector<string> readFromFile(const string& filename)
 
 void printToScreen(const vector<string>& lines)
 {
-    cout<<endl;
+     wcout << L"Вывод строк на экран" << endl;
+    for (const string& line : lines) {
+        cout << line << endl;
+    }
 }
 
 void writeToFile(const vector<string>& lines, const string& filename)
