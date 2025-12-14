@@ -7,6 +7,17 @@ using namespace std;
 vector<string> readFromFile(const string& filename)
 {
     vector<string> lines;
+    ifstream file(filename);
+    if (!file.is_open()) {
+        cerr << "Ошибка открытия файла: " << filename << endl;
+        return lines;
+    }
+
+    string line;
+    while (getline(file, line)) {
+        lines.push_back(line);
+    }
+    file.close();
     return lines;
 }
 
