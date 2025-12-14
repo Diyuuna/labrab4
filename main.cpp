@@ -9,7 +9,7 @@ vector<string> readFromFile(const string& filename)
     vector<string> lines;
     ifstream file(filename);
     if (!file.is_open()) {
-        cerr << "Ошибка открытия файла: " << filename << endl;
+        cerr << "Error in opening the file: " << filename << endl;
         return lines;
     }
 
@@ -31,7 +31,16 @@ void printToScreen(const vector<string>& lines)
 
 void writeToFile(const vector<string>& lines, const string& filename)
 {
-    cout<<endl;
+    ofstream outFile(filename);
+    if (!outFile.is_open()) {
+        cerr << " Error in opening the file " << filename << " for writting" << endl;
+        return;
+    }
+    for (const string& line : lines) {
+        outFile << line << endl;
+    }
+    outFile.close();
+    cout << "Written " << lines.size() << " lines to the file " << filename << endl;
 }
 
 int main()
